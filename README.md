@@ -12,7 +12,7 @@ Further on I'll make this util menu-driven instead.
   3. Check for internet connectivity thru dns-resolving, pinging predetermined ip-addresses.
  
 
-This list will probably grow in time as the project matures.
+This list will probably grow with time as the project matures.
 
 
 To use this script you will have to download the Adafruit-Raspberry-Pi-Python-Code, and this is how you do it with raspbian:
