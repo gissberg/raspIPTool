@@ -1,6 +1,8 @@
 raspIPTool
 ==========
-A script to use a raspberryPi equipedwith Adafruits LCD Pi Plate as a testertool when building and managing a rj45 lan or wan. All functions are availabe from the 5 buttons on the LCD-display. The idea was born when I patched up a new office and had to use my laptop to see if every lan-port worked. 24 release/renew with my laptop in one hand and changing lan-port with the other. 
+A script to use a raspberryPi equipedwith Adafruits LCD Pi Plate as a testertool when building and managing a rj45 lan or wan. All functions are availabe from the 5 buttons on the LCD-display. The idea was born when I patched up a new office and had to use my laptop to see if every lan-port worked. 24 release/renew with my laptop in one hand and changing lan-port with the other. To install the script just run:
+
+git clone https://github.com/gissberg/raspIPTool.git
 
 Further on I'll make this util menu-driven instead.
 
