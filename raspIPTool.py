@@ -59,7 +59,7 @@ while True:
             lcd.message(gateway )
             time.sleep(2)
             lcd.clear()
-            lcd.message("Internet funkar:\n")
+            lcd.message("Internet works:\n")
             lcd.message(dns )
 
     elif lcd.buttonPressed(lcd.DOWN):
