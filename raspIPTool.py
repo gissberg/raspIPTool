@@ -75,7 +75,7 @@ while True:
     elif lcd.buttonPressed(lcd.RIGHT):
             lcd.backlight(lcd.ON)            
             lcd.clear()
-            lcd.message("Internet funkar:\n")
+            lcd.message("Internet works:\n")
             lcd.message(dns )
 
     elif lcd.buttonPressed(lcd.SELECT):
