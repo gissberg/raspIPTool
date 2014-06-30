@@ -13,7 +13,8 @@ Further on I'll make this util menu-driven instead.
   2. Check for internet connectivity thru socket connection to gateway and www.google.com. The output is True or False
   3. Soft poweroff
 
- I'm planning the following features:
+ 
+ I'm planning for the following features:
  
   1. releasing and renewing the IP
  
