@@ -15,8 +15,7 @@ Further on I'll make this util menu-driven instead.
 
  
  I'm planning for the following features:
- 
-  1. releasing and renewing the IP
+   1. releasing and renewing the IP
  
 
 This list will probably grow with time as the project matures.
