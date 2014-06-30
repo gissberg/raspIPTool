@@ -8,12 +8,14 @@ git clone https://github.com/gissberg/raspIPTool.git
 
 Further on I'll make this util menu-driven instead.
 
+ It has the following features:
+  1. Display the IP, Netmask, speed and duplex.
+  2. Check for internet connectivity thru socket connection to gateway and www.google.com. The output is True or False
+  3. Soft poweroff
 
  I'm planning the following features:
  
-  1. Display the IP, Netmask and gateway.
-  2. releasing and renewing the IP
-  3. Check for internet connectivity thru dns-resolving, pinging predetermined ip-addresses.
+  1. releasing and renewing the IP
  
 
 This list will probably grow with time as the project matures.

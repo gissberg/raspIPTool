@@ -14,6 +14,7 @@ lcd.clear()
 cmd = "ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'" #Get IP
 cmd2 = "ifconfig eth0 | grep 'Mask:' | cut -d: -f4 | awk '{ print $1}'" #Get Netmask
 cmd3 = "ip route show | grep 'default via' | cut -d ' ' -f3 | awk '{ print $1}'" #Get Gateway
+cmd4 = "ethtool eth0 | grep -w 'Speed\|Duplex' | awk '{ print $1$2}'"
 REMOTE_SERVER = "www.google.com"
 lcd.begin(16,1)
 
@@ -35,11 +36,26 @@ def is_connected():
      pass
   return False
 
+def con_gateway():
+  try:
+    # see if we can resolve the host name -- tells us if there is
+    # a DNS listening
+    host = socket.gethostbyname(gateway)
+    # connect to the host -- tells us if the host is actually
+    # reachable
+    s = socket.create_connection((host, 80), 2)
+    return True
+  except:
+     pass
+  return False
+
+
 ipaddr = run_cmd(cmd)
 netmask = run_cmd(cmd2)
 gateway = run_cmd(cmd3)
+speed = run_cmd(cmd4)
 dns = is_connected()
-
+gwconn = con_gateway()
 
 pressed_time = None
 
@@ -59,13 +75,21 @@ while True:
             lcd.message(gateway )
             time.sleep(2)
             lcd.clear()
-            lcd.message("Internet works:\n")
-            lcd.message(dns )
+            lcd.message(speed )
+            time.sleep(2)
+            lcd.clear()
+            lcd.message("Ip-Address:\n")
+            lcd.message(ipaddr )
 
     elif lcd.buttonPressed(lcd.DOWN):
             lcd.backlight(lcd.ON)
             lcd.clear()
-            lcd.message("Down we go:\n")
+            lcd.message("Connect to GW:\n")
+            lcd.message(gwconn )
+            time.sleep(2)
+            lcd.clear()
+            lcd.message("Resolve google:\n")
+            lcd.message(dns )
 
     elif lcd.buttonPressed(lcd.LEFT):
             lcd.backlight(lcd.ON)            
