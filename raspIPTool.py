@@ -15,6 +15,7 @@ cmd = "ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'" #Get
 cmd2 = "ifconfig eth0 | grep 'Mask:' | cut -d: -f4 | awk '{ print $1}'" #Get Netmask
 cmd3 = "ip route show | grep 'default via' | cut -d ' ' -f3 | awk '{ print $1}'" #Get Gateway
 cmd4 = "ethtool eth0 | grep -w 'Speed\|Duplex' | awk '{ print $1$2}'"
+cmd5 = "tail -n 100 /var/log/syslog | grep 'dhclient: DHCPACK from' | awk '{ print $8}'"
 REMOTE_SERVER = "www.google.com"
 lcd.begin(16,1)
 
@@ -38,12 +39,9 @@ def is_connected():
 
 def con_gateway():
   try:
-    # see if we can resolve the host name -- tells us if there is
-    # a DNS listening
-    host = socket.gethostbyname(gateway)
-    # connect to the host -- tells us if the host is actually
+    # connect to the gateway -- tells us if the gateway is actually
     # reachable
-    s = socket.create_connection((host, 80), 2)
+    s = socket.create_connection((gateway, 80), 2)
     return True
   except:
      pass
@@ -54,6 +52,7 @@ ipaddr = run_cmd(cmd)
 netmask = run_cmd(cmd2)
 gateway = run_cmd(cmd3)
 speed = run_cmd(cmd4)
+getdhcp = run_cmd(cmd5)
 dns = is_connected()
 gwconn = con_gateway()
 
@@ -99,8 +98,8 @@ while True:
     elif lcd.buttonPressed(lcd.RIGHT):
             lcd.backlight(lcd.ON)            
             lcd.clear()
-            lcd.message("Internet works:\n")
-            lcd.message(dns )
+            lcd.message("Got ip from:\n")
+            lcd.message(getdhcp )
 
     elif lcd.buttonPressed(lcd.SELECT):
         if pressed_time is None:
