@@ -12,11 +12,11 @@ Further on I'll make this util menu-driven instead.
   1. Display the IP, Netmask, speed and duplex.
   2. Displays ip of DHCP-server
   3. Check for internet connectivity thru socket connection to gateway and www.google.com. The output is True or False
-  4. Soft poweroff
-
+  4. Releasing and renewing the IP
+  5. Soft poweroff
  
  I'm planning for the following features:
-  1. Releasing and renewing the IP
+  ? I'm open for suggestions here.
   
 
 This list will probably grow with time as the project matures.
