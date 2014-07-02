@@ -93,12 +93,26 @@ while True:
     elif lcd.buttonPressed(lcd.LEFT):
             lcd.backlight(lcd.ON)            
             lcd.clear()
-            lcd.message("Left we go:\n")
+            lcd.message("Releasing IP.\n")
+            os.system("sudo dhclient -r")
+            time.sleep(2)
+            lcd.clear()
+            lcd.message("Deleting leases.\n")
+            os.system("sudo rm /var/lib/dhcp/dhclient*")
+            time.sleep(2)
+            lcd.clear()
+            lcd.message("Renewing IP\n")
+            os.system("sudo dhclient eth0")
+            lcd.message(ipaddr )
+            time.sleep(2)
+            lcd.clear()
+            lcd.message("Ip-Address:\n")
+            lcd.message(ipaddr )
 
     elif lcd.buttonPressed(lcd.RIGHT):
             lcd.backlight(lcd.ON)            
             lcd.clear()
-            lcd.message("Got ip from:\n")
+            lcd.message("Got IP from:\n")
             lcd.message(getdhcp )
 
     elif lcd.buttonPressed(lcd.SELECT):
